@@ -19,6 +19,26 @@ class TestTicTacToe(unittest.TestCase):
         result = game.make_move(0, 0, 'O')
         self.assertFalse(result)
 
+    def test_check_win(self):
+        game = TicTacToe()
+        game.make_move(0, 0, 'X')
+        game.make_move(0, 1, 'X')
+        game.make_move(0, 2, 'X')
+        self.assertTrue(game.check_win('X'))
+
+    def test_check_draw(self):
+        game = TicTacToe()
+        game.make_move(0, 0, 'X')
+        game.make_move(0, 1, 'O')
+        game.make_move(0, 2, 'X')
+        game.make_move(1, 0, 'X')
+        game.make_move(1, 1, 'O')
+        game.make_move(1, 2, 'X')
+        game.make_move(2, 0, 'O')
+        game.make_move(2, 1, 'X')
+        game.make_move(2, 2, 'O')
+        self.assertTrue(game.check_draw())
+
 
 if __name__ == '__main__':
     unittest.main()
